@@ -1,13 +1,9 @@
 ﻿import { BrotliDecode } from './decode.min.js';
 
-const progressText = document.getElementById("progress-text");
+//const progressText = document.getElementById("progress-text");
 
 Blazor.start({
     loadBootResource: function (type, name, defaultUri, integrity) {
-        console.log("### " + name);
-        if (progressText !== null) {
-            progressText.innerText = `Loading: ${name}`;
-        }
         if (type !== 'dotnetjs' && location.hostname !== 'localhost') {
             return (async function () {
                 const response = await fetch(defaultUri + '.br', { cache: 'no-cache' });
@@ -37,9 +33,9 @@ const timer = setInterval(() => {
     progress = Math.ceil(progress + d);
 
     if (progressBar !== null) {
-        progressBar.style.width = progress + "px";
+        progressBar.style.width = progress + "%";
     }
-    console.log(progress);
+    //console.log(progress);
 },
     100);
 
